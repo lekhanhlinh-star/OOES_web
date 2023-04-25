@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+  "home.apps.HomeConfig",# Add path config to proe
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -54,7 +55,7 @@ ROOT_URLCONF = "laptopsite.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [r'home\templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -75,8 +76,12 @@ WSGI_APPLICATION = "laptopsite.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+       'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'OOSE_LAPTOP_DB',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
 
@@ -98,6 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+LOGIN_URL = 'home/login'
+LOGIN_REDIRECT_URL="home"
 
 
 # Internationalization
